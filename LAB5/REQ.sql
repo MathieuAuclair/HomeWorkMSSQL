@@ -1,0 +1,27 @@
+USE LAB6
+GO
+SELECT *
+FROM SALLE
+GO
+SELECT *
+FROM COURS
+GO
+SELECT *
+FROM MACHINE
+GO
+SELECT *
+FROM COURS_MACHINE
+GO
+SELECT *
+FROM FORMATION
+GO
+
+
+SELECT
+  salle.id,
+  COUNT(*) AS 'formationCount'
+FROM SALLE salle
+  INNER JOIN FORMATION f
+    ON f.salle = salle.id
+GROUP BY salle.id
+HAVING COUNT(f.salle) > 1
